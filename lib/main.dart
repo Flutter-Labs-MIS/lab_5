@@ -31,6 +31,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<ExamCard> _exams = [
+    const ExamCard(
+      "Structural Programming",
+      "12/12/2022 12:12:12",
+    ),
+    const ExamCard(
+      "Object-oriented Programming",
+      "12/12/2022 12:12:12",
+    ),
+    const ExamCard(
+      "Algorithms and Data structures",
+      "12/12/2022 12:12:12",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,11 +66,25 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: ListView.builder(
-        itemBuilder: (ctx, index) {
-          return ExamCard();
-        },
-      ),
+      body: _exams.isEmpty
+          ? const Center(
+              child: Text(
+                "There are no exams added",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          : ListView.builder(
+              itemBuilder: (ctx, index) {
+                return ExamCard(
+                  _exams[index].examName,
+                  _exams[index].dateTime,
+                );
+              },
+              itemCount: _exams.length,
+            ),
     );
   }
 }

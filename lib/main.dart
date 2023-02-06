@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'exam_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,13 +36,25 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(
+              right: 20,
+            ),
+            child: GestureDetector(
+              onTap: () => {},
+              child: const Icon(
+                Icons.add,
+                size: 30,
+              ),
+            ),
+          )
+        ],
       ),
-      body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Here will be the list of exams'),
-            ]),
+      body: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return ExamCard();
+        },
       ),
     );
   }

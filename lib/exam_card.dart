@@ -4,6 +4,7 @@ class ExamCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 4,
       child: Container(
         margin: const EdgeInsets.all(20),
         child: Column(

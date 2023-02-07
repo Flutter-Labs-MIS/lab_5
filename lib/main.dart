@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab_3/models/exam.dart';
 import 'exam_card.dart';
 
 void main() {
@@ -34,8 +35,10 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<ExamCard> _exams = [];
 
   void _addExamToList() {
-    ExamCard el =
-        const ExamCard("Structural Programming", "12/12/2021 12:12:12");
+    ExamCard el = ExamCard(Exam(
+        id: 1,
+        name: "Structural Programming",
+        dateTime: "12:12:12 12/12/2012"));
     setState(() {
       _exams.add(el);
     });
@@ -74,8 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return ExamCard(
-                  _exams[index].examName,
-                  _exams[index].dateTime,
+                  _exams[index].exam,
                 );
               },
               itemCount: _exams.length,

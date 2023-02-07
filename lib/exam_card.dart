@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'models/exam.dart';
 
 class ExamCard extends StatelessWidget {
-  final String examName;
-  final String dateTime;
+  final Exam exam;
 
-  const ExamCard(this.examName, this.dateTime, {super.key});
+  const ExamCard(this.exam, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ExamCard extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              examName,
+              exam.name,
               style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -23,7 +23,7 @@ class ExamCard extends StatelessWidget {
               ),
             ),
             Text(
-              dateTime,
+              exam.dateTime,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,

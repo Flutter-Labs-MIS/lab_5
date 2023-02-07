@@ -31,20 +31,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<ExamCard> _exams = [
-    const ExamCard(
-      "Structural Programming",
-      "12/12/2022 12:12:12",
-    ),
-    const ExamCard(
-      "Object-oriented Programming",
-      "12/12/2022 12:12:12",
-    ),
-    const ExamCard(
-      "Algorithms and Data structures",
-      "12/12/2022 12:12:12",
-    ),
-  ];
+  final List<ExamCard> _exams = [];
+
+  void _addExamToList() {
+    ExamCard el =
+        const ExamCard("Structural Programming", "12/12/2021 12:12:12");
+    setState(() {
+      _exams.add(el);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               right: 20,
             ),
             child: GestureDetector(
-              onTap: () => {},
+              onTap: _addExamToList,
               child: const Icon(
                 Icons.add,
                 size: 30,

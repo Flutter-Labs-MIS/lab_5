@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class ExamsCalendar extends StatefulWidget {
   const ExamsCalendar({Key? key});
@@ -13,6 +14,17 @@ class _ExamsCalendarState extends State<ExamsCalendar> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Exam Calendar"),
+      ),
+      body: TableCalendar(
+        firstDay: DateTime(1990),
+        lastDay: DateTime(2100),
+        focusedDay: DateTime.now(),
+        calendarStyle: const CalendarStyle(
+          todayDecoration: BoxDecoration(
+            color: Colors.red,
+            shape: BoxShape.circle,
+          ),
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lab_3/models/exam.dart';
 import 'exam_card.dart';
+import 'widgets/new_exam_item_form.dart';
+import 'models/exam.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,13 +35,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<ExamCard> _exams = [];
 
-  void _addExamToList() {
-    ExamCard el = ExamCard(Exam(
-        id: 1,
-        name: "Structural Programming",
-        dateTime: "12:12:12 12/12/2012"));
+  void _showModalForm(ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return GestureDetector(
+          onTap: () => {},
+          behavior: HitTestBehavior.opaque,
+          child: NewExamItemForm(_addExamToList),
+        );
+      },
+    );
+  }
+
+  void _addExamToList(Exam exam) {
     setState(() {
-      _exams.add(el);
+      _exams.add(ExamCard(exam));
     });
   }
 
@@ -55,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
               right: 20,
             ),
             child: GestureDetector(
-              onTap: _addExamToList,
+              onTap: () => _showModalForm(context),
               child: const Icon(
                 Icons.add,
                 size: 30,

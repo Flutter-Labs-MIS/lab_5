@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lab_3/models/exam.dart';
 import 'package:nanoid/nanoid.dart';
 
@@ -37,6 +38,29 @@ class _NewExamItemFormState extends State<NewExamItemForm> {
     Navigator.of(context).pop();
   }
 
+  void _selectDate() async {
+    final date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1990),
+      lastDate: DateTime(2100),
+    );
+    if (date == null) return;
+    String formattedDate = DateFormat("dd/MM/yyyy").format(date);
+    _examDateController.text = formattedDate.toString();
+  }
+
+  void _selectTime() async {
+    final time = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (time == null) return;
+    String hour = time.hour.toString();
+    String minute = time.minute.toString();
+    _examTimeController.text = "$hour:$minute";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,13 +74,17 @@ class _NewExamItemFormState extends State<NewExamItemForm> {
           ),
           TextField(
             controller: _examDateController,
+            readOnly: true,
             decoration: const InputDecoration(labelText: "Exam Date"),
             onSubmitted: (_) => _submitForm,
+            onTap: _selectDate,
           ),
           TextField(
             controller: _examTimeController,
+            readOnly: true,
             decoration: const InputDecoration(labelText: "Exam Time"),
             onSubmitted: (_) => _submitForm,
+            onTap: _selectTime,
           ),
           Container(
             padding: const EdgeInsets.only(top: 30),

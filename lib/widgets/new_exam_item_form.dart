@@ -13,21 +13,25 @@ class NewExamItemForm extends StatefulWidget {
 
 class _NewExamItemFormState extends State<NewExamItemForm> {
   final _examNameController = TextEditingController();
-  final _examDateTimeController = TextEditingController();
+  final _examDateController = TextEditingController();
+  final _examTimeController = TextEditingController();
 
   // late String examName;
   // late String examDateTime;
 
   void _submitForm() {
     if (_examNameController.text.isEmpty ||
-        _examDateTimeController.text.isEmpty) {
+        _examDateController.text.isEmpty ||
+        _examNameController.text.isEmpty) {
       return;
     }
 
     final String examName = _examNameController.text;
-    final String examDateTime = _examDateTimeController.text;
+    final String examDate = _examDateController.text;
+    final String examTime = _examTimeController.text;
 
-    final Exam e = Exam(id: nanoid(4), name: examName, dateTime: examDateTime);
+    final Exam e =
+        Exam(id: nanoid(4), name: examName, date: examDate, time: examTime);
 
     widget.addItemFunction(e);
     Navigator.of(context).pop();
@@ -45,8 +49,13 @@ class _NewExamItemFormState extends State<NewExamItemForm> {
             onSubmitted: (_) => _submitForm,
           ),
           TextField(
-            controller: _examDateTimeController,
-            decoration: const InputDecoration(labelText: "Exam Date and Time"),
+            controller: _examDateController,
+            decoration: const InputDecoration(labelText: "Exam Date"),
+            onSubmitted: (_) => _submitForm,
+          ),
+          TextField(
+            controller: _examTimeController,
+            decoration: const InputDecoration(labelText: "Exam Time"),
             onSubmitted: (_) => _submitForm,
           ),
           Container(

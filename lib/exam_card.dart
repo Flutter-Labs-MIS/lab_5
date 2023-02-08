@@ -23,13 +23,13 @@ class ExamCard extends StatelessWidget {
               ),
             ),
             Text(
-              exam.dateTime,
+              "Date: ${exam.date} Time: ${exam.time}",
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
                 color: Color.fromRGBO(180, 180, 180, 1),
               ),
-            )
+            ),
           ],
         ),
       ),

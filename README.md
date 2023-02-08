@@ -1,16 +1,3 @@
-# lab_3
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Blank Exam Screen             | Adding Exam Form          | List of added exams
+:-------------------------:|:-------------------------:| :------------------------
+<img height="400" src="https://user-images.githubusercontent.com/75941337/217403955-d2a1c9b3-c8fe-4d35-829a-c211770bff82.png">  |  <img height="400" src="https://user-images.githubusercontent.com/75941337/217403945-67d401c0-e627-4091-b506-673408f20731.png">   |  <img height="400" src="https://user-images.githubusercontent.com/75941337/217403948-f09b95de-cb44-4a56-958e-549ae841aae7.png">

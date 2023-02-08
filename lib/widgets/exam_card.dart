@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'models/exam.dart';
+import '../models/exam.dart';
 
 class ExamCard extends StatelessWidget {
   final Exam exam;

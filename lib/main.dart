@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'exam_card.dart';
-import 'widgets/new_exam_item_form.dart';
-import 'models/exam.dart';
+import 'package:lab_3/utilities/router/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,80 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 'Exam Reminder'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final List<ExamCard> _exams = [];
-
-  void _showModalForm(ctx) {
-    showModalBottomSheet(
-      context: ctx,
-      builder: (_) {
-        return GestureDetector(
-          onTap: () => {},
-          behavior: HitTestBehavior.opaque,
-          child: NewExamItemForm(_addExamToList),
-        );
-      },
-    );
-  }
-
-  void _addExamToList(Exam exam) {
-    setState(() {
-      _exams.add(ExamCard(exam));
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(
-              right: 20,
-            ),
-            child: GestureDetector(
-              onTap: () => _showModalForm(context),
-              child: const Icon(
-                Icons.add,
-                size: 30,
-              ),
-            ),
-          )
-        ],
-      ),
-      body: _exams.isEmpty
-          ? const Center(
-              child: Text(
-                "There are no exams added",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          : ListView.builder(
-              itemBuilder: (ctx, index) {
-                return ExamCard(
-                  _exams[index].exam,
-                );
-              },
-              itemCount: _exams.length,
-            ),
+      initialRoute: RouterGenerator.homeRoute,
+      onGenerateRoute: RouterGenerator.generateRoute,
     );
   }
 }

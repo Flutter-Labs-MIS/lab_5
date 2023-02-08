@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab_3/themes/custom_theme.dart';
 import 'package:lab_3/utilities/router/router.dart';
 
 void main() {
@@ -13,9 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Exam Reminder',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
+      theme: CustomTheme.redTheme,
       initialRoute: RouterGenerator.homeRoute,
       onGenerateRoute: RouterGenerator.generateRoute,
     );

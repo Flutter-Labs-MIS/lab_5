@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab_3/screens/exams_calendar.dart';
 import 'package:lab_3/screens/home.dart';
 
 class RouterGenerator {
@@ -11,6 +12,10 @@ class RouterGenerator {
           builder: (_) => const Home(
             title: "Exam Reminder",
           ),
+        );
+      case 'exams_calendar':
+        return MaterialPageRoute(
+          builder: (_) => const ExamsCalendar(),
         );
       default:
         return _error();

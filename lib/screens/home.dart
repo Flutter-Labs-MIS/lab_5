@@ -72,6 +72,14 @@ class _HomeState extends State<Home> {
               },
               itemCount: _exams.length,
             ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'exams_calendar');
+        },
+        child: const Icon(
+          Icons.calendar_month,
+        ),
+      ),
     );
   }
 }

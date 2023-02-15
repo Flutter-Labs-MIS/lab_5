@@ -4,8 +4,6 @@ import 'package:lab_3/screens/home.dart';
 
 class RouterGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
-
     switch (settings.name) {
       case 'home':
         return MaterialPageRoute(

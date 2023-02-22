@@ -13,7 +13,7 @@ class RouterGenerator {
         );
       case 'exams_calendar':
         return MaterialPageRoute(
-          builder: (_) => ExamsCalendar(),
+          builder: (_) => const ExamsCalendar(),
         );
       default:
         return _error();

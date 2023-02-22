@@ -17,7 +17,6 @@ class ExamsCalendar extends StatefulWidget {
 
 class _ExamsCalendarState extends State<ExamsCalendar> {
   DateTime _selectedDay = DateTime.now();
-  DateTime _focusedDay = DateTime.now();
 
   List<Exam> _getExamsForDay(BuildContext context, DateTime day) {
     return context
@@ -49,14 +48,10 @@ class _ExamsCalendarState extends State<ExamsCalendar> {
             onDaySelected: (selectedDay, focusedDay) {
               setState(() {
                 _selectedDay = selectedDay;
-                _focusedDay = focusedDay; // update `_focusedDay` here as well
               });
             },
             selectedDayPredicate: (day) {
               return isSameDay(_selectedDay, day);
-            },
-            onPageChanged: (focusedDay) {
-              _focusedDay = focusedDay;
             },
             eventLoader: (day) => _getExamsForDay(context, day),
           ),

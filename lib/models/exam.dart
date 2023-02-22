@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+
 class Exam {
   final String id;
   final String name;
@@ -10,4 +13,15 @@ class Exam {
     required this.date,
     required this.time,
   });
+}
+
+class ExamModel extends ChangeNotifier {
+  final List<Exam> _exams = [];
+
+  List<Exam> get exams => _exams;
+
+  void addExam(Exam exam) {
+    _exams.add(exam);
+    notifyListeners();
+  }
 }

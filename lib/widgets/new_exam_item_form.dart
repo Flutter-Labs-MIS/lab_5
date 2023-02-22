@@ -34,7 +34,7 @@ class _NewExamItemFormState extends State<NewExamItemForm> {
     final Exam e =
         Exam(id: nanoid(4), name: examName, date: examDate, time: examTime);
 
-    widget.addItemFunction(e);
+    widget.addItemFunction(context, e);
     Navigator.of(context).pop();
   }
 

@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/exam_card.dart';
 import '../widgets/new_exam_item_form.dart';
 import '../models/exam.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  final List<ExamCard> _exams = [];
 
   void _showModalForm(ctx) {
     showModalBottomSheet(
@@ -28,17 +22,15 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void _addExamToList(Exam exam) {
-    setState(() {
-      _exams.add(ExamCard(exam));
-    });
+  void _addExamToList(BuildContext context, Exam exam) {
+    context.read<ExamModel>().addExam(exam);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
         actions: [
           Padding(
             padding: const EdgeInsets.only(
@@ -54,7 +46,7 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: _exams.isEmpty
+      body: context.watch<ExamModel>().exams.isEmpty
           ? const Center(
               child: Text(
                 "There are no exams added",
@@ -67,10 +59,10 @@ class _HomeState extends State<Home> {
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return ExamCard(
-                  _exams[index].exam,
+                  context.watch<ExamModel>().exams[index],
                 );
               },
-              itemCount: _exams.length,
+              itemCount: context.watch<ExamModel>().exams.length,
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

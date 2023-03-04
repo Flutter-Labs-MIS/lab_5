@@ -6,6 +6,7 @@ Date Picker | Time Picker | Empty Calendar Exams
 :-----------:|:-------------:|:--------------
 <img height="400" src="https://user-images.githubusercontent.com/75941337/217534201-7f4983d7-9e66-4af5-8bef-ac9489c82b17.png"> | <img height="400" src="https://user-images.githubusercontent.com/75941337/217534247-1796c9fc-bdf7-4923-b23e-677452a4b860.png"> | <img height="400" src="https://user-images.githubusercontent.com/75941337/220749041-bb546d75-6ffd-41b0-a19b-d43750175c54.png">
 
-Calendar with Exams |
-:------------------:|
-<img height="400" src="https://user-images.githubusercontent.com/75941337/220749619-cb9c9c8d-d25c-4b3c-b258-9bac2e13fdf5.png"> |
+Calendar with Exams | Local Notification *tested with USB debugging
+:------------------:|:-------------------
+<img height="400" src="https://user-images.githubusercontent.com/75941337/220749619-cb9c9c8d-d25c-4b3c-b258-9bac2e13fdf5.png"> | <img height="400" src="https://user-images.githubusercontent.com/75941337/220768136-abe44f5a-def9-4fd7-8980-aa1d1826a9a0.jpeg">
+

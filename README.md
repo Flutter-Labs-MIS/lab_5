@@ -10,3 +10,6 @@ Calendar with Exams | Local Notification *tested with USB debugging
 :------------------:|:-------------------
 <img height="400" src="https://user-images.githubusercontent.com/75941337/220749619-cb9c9c8d-d25c-4b3c-b258-9bac2e13fdf5.png"> | <img height="400" src="https://user-images.githubusercontent.com/75941337/220768136-abe44f5a-def9-4fd7-8980-aa1d1826a9a0.jpeg">
 
+Welcome Page | Login Page | Register Page
+:-----------:|:----------:|:-------------
+<img height="400" src="https://user-images.githubusercontent.com/75941337/222994153-20bf260c-079c-46b5-b8a1-08a16ee609dc.jpeg"> | <img height="400" src="https://user-images.githubusercontent.com/75941337/222994148-d6155058-5415-45db-8011-ee896216597b.jpeg"> | <img height="400" src="https://user-images.githubusercontent.com/75941337/222994151-6b1bf336-ea39-44a3-9cf7-c4a1f437061b.jpeg">

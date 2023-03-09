@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lab_3/screens/add_exam.dart';
 import 'package:provider/provider.dart';
 import '../widgets/exam_card.dart';
-import '../widgets/new_exam_item_form.dart';
 import '../models/exam.dart';
 import 'login_page.dart';
 
@@ -18,52 +18,37 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _showExams(context);
-    });
+    _showExams(context);
     super.initState();
   }
 
   void _showExams(BuildContext context) {
     context.read<ExamModel>().showExamList();
   }
-
-  void _showModalForm(ctx) {
-    showModalBottomSheet(
-      context: ctx,
-      builder: (_) {
-        return GestureDetector(
-          onTap: () => {},
-          behavior: HitTestBehavior.opaque,
-          child: NewExamItemForm(_addExamToList),
-        );
-      },
-    );
-  }
-
-  void _addExamToList(BuildContext context, Exam exam) {
-    context.read<ExamModel>().addExam(exam);
+  
+  void _clearExamsList(BuildContext context) {
+    context.read<ExamModel>().clearList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: 
-          ElevatedButton(
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => const LoginPage(),
-                ),
-              );
-            },
-            child: const Icon(
-              Icons.logout_rounded,
-              size: 30,
-            ),
+        leading: ElevatedButton(
+          onPressed: () async {
+            await FirebaseAuth.instance.signOut();
+            _clearExamsList;
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => const LoginPage(),
+              ),
+            );
+          },
+          child: const Icon(
+            Icons.logout_rounded,
+            size: 30,
           ),
+        ),
         title: Text(widget.title),
         actions: [
           Padding(
@@ -71,7 +56,11 @@ class _HomeState extends State<Home> {
               right: 20,
             ),
             child: GestureDetector(
-              onTap: () => _showModalForm(context),
+              onTap: () =>  Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => const AddExam(),
+              ),
+            ),
               child: const Icon(
                 Icons.add,
                 size: 30,

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lab_3/screens/home.dart';
 import 'package:lab_3/screens/welcome_page.dart';
+import 'package:provider/provider.dart';
+
+import '../models/exam.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,7 +23,12 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    _clearExamsList(context);
     super.initState();
+  }
+
+  void _clearExamsList(BuildContext context) {
+    context.read<ExamModel>().clearList();
   }
 
   @override

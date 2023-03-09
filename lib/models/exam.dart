@@ -8,12 +8,14 @@ class Exam {
   final String name;
   final String date;
   final String time;
+  final String location;
 
   Exam({
     required this.id,
     required this.name,
     required this.date,
     required this.time,
+    required this.location,
   });
 }
 
@@ -33,12 +35,17 @@ class ExamModel extends ChangeNotifier {
           name: exam['name'],
           date: exam['date'],
           time: exam['time'],
+          location: exam['location'],
         );
 
         exams.add(data);
       });
     });
     notifyListeners();
+  }
+
+  void clearList() {
+    exams = <Exam>[];
   }
 
   void addExam(Exam exam) async {
@@ -53,13 +60,13 @@ class ExamModel extends ChangeNotifier {
             'name': exam.name,
             'date': exam.date,
             'time': exam.time,
+            'location': exam.location,
           }
         ]),
       },
       SetOptions(merge: true),
     );
     exams.add(exam);
-
     notifyListeners();
   }
 }

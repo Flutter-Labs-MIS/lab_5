@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lab_3/screens/home.dart';
 import 'package:lab_3/screens/welcome_page.dart';
+import 'package:provider/provider.dart';
+
+import '../models/exam.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -21,7 +24,12 @@ class _RegisterPageState extends State<RegisterPage> {
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    _clearExamsList(context);
     super.initState();
+  }
+
+  void _clearExamsList(BuildContext context) {
+    context.read<ExamModel>().clearList();
   }
 
   @override
@@ -102,8 +110,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       email: email,
                       password: password,
                     );
-                    FirebaseFirestore.instance.collection('users').doc(registerNewUser.user?.uid)
-                    .set({
+                    FirebaseFirestore.instance
+                        .collection('users')
+                        .doc(registerNewUser.user?.uid)
+                        .set({
                       'id': registerNewUser.user?.uid,
                       'email': registerNewUser.user?.email,
                       'exams': []
